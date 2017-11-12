@@ -12,7 +12,7 @@ module.exports = {
 	getFlights: function(request, response, whereClause, bindVariables) {
 		dbutil.handleDatabaseOperation( request, response, 
 			function (request, response, connection) {
-				var selectStatement = "SELECT FLIGHT_NUMBER, PLACE, AIRLINE_CODE, DATE_TIME, IS_ARRIVAL FROM FLIGHTS ";
+				var selectStatement = "SELECT FLIGHT_NUMBER, PLACE, AIRLINE, DATE_TIME, IS_ARRIVAL FROM FLIGHTS ";
 				var selectBindVariables = [];
 				if(whereClause) {
 					selectStatement = selectStatement + whereClause;
@@ -23,9 +23,9 @@ module.exports = {
 				connection.execute(selectStatement, selectBindVariables, {outFormat: oracledb.OBJECT}, 
 									function (err, result) {
 										if (err) {
-											handleError('Error in getting flight', err, response);  
+											dbutil.handleError('Error in getting flight', err, response);  
 										} else {
-											writeResultInResponse(result, response);
+											dbutil.writeResultInResponse(result, response);
 										}
 					dbutil.doRelease(connection);
 				});

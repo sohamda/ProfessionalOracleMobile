@@ -12,9 +12,9 @@ handleDatabaseOperation: function( request, response, callback) {
   
   console.log('Handle request: '+request.url);
   oracledb.getConnection({
-    user          : process.env.DBAAS_USER_NAME || "dont_know",
-    password      : process.env.DBAAS_USER_PASSWORD || "this_as_well",
-    connectString : process.env.DBAAS_DEFAULT_CONNECT_DESCRIPTOR || "no_way"
+    user          : process.env.DBAAS_USER_NAME || "AIRPORT",
+    password      : process.env.DBAAS_USER_PASSWORD || "Welcome1#",
+    connectString : process.env.DBAAS_DEFAULT_CONNECT_DESCRIPTOR || "129.144.152.150:1521/PDB1.partnercloud17.oraclecloud.internal"
   },
   function(err, connection) {
     if (err) {
