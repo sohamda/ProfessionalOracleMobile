@@ -1,13 +1,16 @@
 var express = require('express');
 var http = require('http');
+var bodyParser = require('body-parser');
 
 var routes = require('./index');
 
 var app = express();
 
-app.use('/', routes);
-
 app.set('view engine', 'jade');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use('/', routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -23,6 +26,7 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
+
 
 
 var port = process.env.PORT || '8089';

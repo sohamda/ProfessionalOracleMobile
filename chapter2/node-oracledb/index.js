@@ -26,4 +26,19 @@ router.get('/api/getFlightInfo', function(req, res, next) {
 	}
 });
 
+router.post('/api/addFlightInfo', function(req, res, next) {
+	
+	if(!req.body.flightNo || !req.body.place || !req.body.dateTime || !req.body.airlineCode) {
+		res.status(500).send({error: "addFlightInfo : Please specify all paramerters"});
+	} else {
+		flights.addFlightInfo(req, res);
+	}
+});
+
+router.put('/api/updateFlightInfo/:flightNo', function(req, res, next) {
+	var date = new Date(req.body.dateTime);
+	flights.updateFlightInfo(req, res, req.params.flightNo, date);
+});
+
+
 module.exports = router;
