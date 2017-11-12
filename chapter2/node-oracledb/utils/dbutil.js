@@ -43,5 +43,19 @@ doRelease: function(connection) {
         console.error(err.message);
       }
     });
+},
+
+handleError : function(message, err, response) {
+	response.writeHead(500, {'Content-Type': 'application/json'});
+	response.end(JSON.stringify({status: 500,
+					message: message,
+					detailed_message: err.message
+	 }));
+},
+
+writeResultInResponse: function(result, response) {
+	response.writeHead(200, {'Content-Type': 'application/json'});					
+	response.end(JSON.stringify({operation :"successful", result : result}));
 }
+
 };
