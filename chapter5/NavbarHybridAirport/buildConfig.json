@@ -1,0 +1,11 @@
+{
+  "android": {
+    "release": {
+      "keystore": "../keys/keystore.jks",
+      "storePassword": "hybridapp",
+      "alias": "hybridAirport",
+      "password" : "hybridapp",
+      "keystoreType": ""
+    }
+  }
+}
