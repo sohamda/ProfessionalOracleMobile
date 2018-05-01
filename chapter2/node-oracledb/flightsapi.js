@@ -12,7 +12,13 @@ module.exports = {
 	getFlights: function(request, response, whereClause, bindVariables) {
 		dbutil.handleDatabaseOperation( request, response, 
 			function (request, response, connection) {
-				var selectStatement = "SELECT FLIGHT_NUMBER, AIRPORTS.CITY || ',' || AIRPORTS.COUNTRY as PLACE , AIRLINES.NAME AS AIRLINES, DATE_TIME, IS_ARRIVAL FROM FLIGHTS INNER JOIN AIRLINES ON AIRLINES.ID=FLIGHTS.AIRLINE INNER JOIN AIRPORTS ON AIRPORTS.ID=FLIGHTS.PLACE ";
+				var selectStatement = "SELECT FLIGHT_NUMBER," +
+							"AIRPORTS.CITY || ',' || AIRPORTS.COUNTRY as PLACE ," +
+							"AIRLINES.NAME AS AIRLINES," +
+							"DATE_TIME," +
+							"IS_ARRIVAL " + 
+							"FROM FLIGHTS INNER JOIN AIRLINES ON AIRLINES.ID=FLIGHTS.AIRLINE " +
+							"INNER JOIN AIRPORTS ON AIRPORTS.ID=FLIGHTS.PLACE ";
 				var selectBindVariables = [];
 				if(whereClause) {
 					selectStatement = selectStatement + whereClause;
@@ -21,12 +27,12 @@ module.exports = {
 					}
 				}
 				connection.execute(selectStatement, selectBindVariables, {outFormat: oracledb.OBJECT}, 
-									function (err, result) {
-										if (err) {
-											dbutil.handleError('Error in getting flight', err, response);  
-										} else {
-											dbutil.writeResultInResponse(result, response);
-										}
+					function (err, result) {
+						if(err) {
+							dbutil.handleError('Error in getting flight', err, response);  
+						}else {
+							dbutil.writeResultInResponse(result, response);
+						}
 					dbutil.doRelease(connection);
 				});
 		});
@@ -40,7 +46,10 @@ module.exports = {
 		var is_arrival = request.body.isArrival;		
 		
 		dbutil.handleDatabaseOperation( request, response, function (request, response, connection) {
-			var insertStatement = "INSERT INTO FLIGHTS (FLIGHT_NUMBER, PLACE, AIRLINE, DATE_TIME, IS_ARRIVAL) VALUES (:flightNo, (SELECT ID FROM AIRPORTS WHERE CODE = :place), (SELECT ID FROM AIRLINES WHERE CODE = :airlineCode), :dateTime, :is_arrival) ";
+			var insertStatement = "INSERT INTO FLIGHTS (FLIGHT_NUMBER, PLACE, AIRLINE, DATE_TIME, IS_ARRIVAL) " +
+						"VALUES (:flightNo, (SELECT ID FROM AIRPORTS WHERE CODE = :place), " +
+								"(SELECT ID FROM AIRLINES WHERE CODE = :airlineCode), " +
+								":dateTime, :is_arrival) ";
 			connection.execute(insertStatement, [flightNo, place, airlineCode, dateTime, is_arrival], 
 				{outFormat: oracledb.OBJECT // Return the result as Object
 				}, function (err, result) {
