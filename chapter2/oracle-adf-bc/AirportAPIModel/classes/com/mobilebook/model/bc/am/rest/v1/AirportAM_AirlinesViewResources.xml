@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="AirportAM_AirlinesViewResources"
+                Package="com.mobilebook.model.bc.am.rest.v1" usageMode="RESTClient">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="AirlinesView1" RangeSize="5" DataControl="AirportAMDataControl" id="AirlinesView1Iter"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="AirlinesView1Iter" id="airlines" AccessorFolder="Always">
+      <nodeDefinition DefName="com.mobilebook.model.bc.vo.AirlinesView" Name="com.mobilebook.model.bc.vo.AirlinesView">
+        <Accessors>
+          <Item Value="FlightsView"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="com.mobilebook.model.bc.vo.FlightsView" Name="com.mobilebook.model.bc.vo.FlightsView"/>
+    </tree>
+  </bindings>
+</pageDefinition>

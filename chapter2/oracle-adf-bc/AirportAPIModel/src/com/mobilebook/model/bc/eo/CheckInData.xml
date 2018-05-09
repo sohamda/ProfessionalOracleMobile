@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CheckInData"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="CHECK_IN_DATA"
+  AliasName="CheckInData"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="FirstName"
+    IsNotNull="true"
+    Precision="50"
+    ColumnName="FIRST_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CHECK_IN_DATA"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LastName"
+    Precision="100"
+    ColumnName="LAST_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CHECK_IN_DATA">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="FlightNo"
+    IsNotNull="true"
+    Precision="20"
+    ColumnName="FLIGHT_NO"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CHECK_IN_DATA"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Identification"
+    Precision="40"
+    ColumnName="IDENTIFICATION"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CHECK_IN_DATA">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="40"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="HasCheckInLuggage"
+    Precision="1"
+    ColumnName="HAS_CHECK_IN_LUGGAGE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CHECK_IN_DATA">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CheckedInOn"
+    ColumnName="CHECKED_IN_ON"
+    SQLType="TIMESTAMP"
+    Type="java.sql.Timestamp"
+    ColumnType="TIMESTAMP"
+    TableName="CHECK_IN_DATA"/>
+  <Attribute
+    Name="IdNumber"
+    IsNotNull="true"
+    Precision="40"
+    ColumnName="ID_NUMBER"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CHECK_IN_DATA"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="40"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="Flights"
+    Association="com.mobilebook.model.bc.eo.CheckInDataFk1Assoc"
+    AssociationEnd="com.mobilebook.model.bc.eo.CheckInDataFk1Assoc.Flights"
+    AssociationOtherEnd="com.mobilebook.model.bc.eo.CheckInDataFk1Assoc.CheckInData"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="Flights1"
+    Association="com.mobilebook.model.bc.eo.FlighCheckInDataAssoc"
+    AssociationEnd="com.mobilebook.model.bc.eo.FlighCheckInDataAssoc.Flights1"
+    AssociationOtherEnd="com.mobilebook.model.bc.eo.FlighCheckInDataAssoc.CheckInData1"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <Key
+    Name="CheckInDataPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="CHECK_IN_DATA_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.mobilebook.model.bc.eo.CheckInData.FirstName"/>
+      <Item Value="com.mobilebook.model.bc.eo.CheckInData.FlightNo"/>
+      <Item Value="com.mobilebook.model.bc.eo.CheckInData.IdNumber"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="CheckInDataFk1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="FLIGHTS_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CHECK_IN_DATA_FK1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.mobilebook.model.bc.eo.CheckInData.FlightNo"/>
+    </AttrArray>
+  </Key>
+</Entity>
