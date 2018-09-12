@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="com.mobilebook.model.bc.am.AirportAM">
+      <AppModuleConfig name="AirportAMLocal" DeployPlatform="LOCAL" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory" ApplicationName="com.mobilebook.model.bc.am.AirportAM" jbo.project="com.mobilebook.model.AirportAPIModel">
+         <Database jbo.locking.mode="optimistic" JDBCDataSource="java:comp/env/jdbc/AirportDBCSDS" jbo.TypeMapEntries="OracleApps"/>
+         <Security AppModuleJndiName="com.mobilebook.model.bc.am.AirportAM"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="AirportAMShared" DeployPlatform="LOCAL" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory" ApplicationName="com.mobilebook.model.bc.am.AirportAM" jbo.project="com.mobilebook.model.AirportAPIModel">
+         <AM-Pooling jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1"/>
+         <Database jbo.locking.mode="optimistic" JDBCDataSource="java:comp/env/jdbc/AirportDBCSDS" jbo.TypeMapEntries="OracleApps"/>
+         <Security AppModuleJndiName="com.mobilebook.model.bc.am.AirportAM"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.2.1.9.14" id="ResourceRegistry"
+             SeparateXMLFiles="false" Package="com.mobilebook.model" ClientType="Generic">
+  <pageMap>
+    <page path="v1_airlines" usageId="v1_AirportAM_AirlinesViewResources"/>
+    <page path="v1_flights" usageId="v1_AirportAM_FlightsViewResources"/>
+    <page path="v1_airports" usageId="v1_AirportAM_AirportsViewResources"/>
+  </pageMap>
+  <dataControlUsages>
+    <BC4JDataControl id="AirportAMDataControl" Package="com.mobilebook.model.bc.am"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="AirportAMLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+  <pageDefinitionUsages>
+    <page id="v1_AirportAM_FlightsViewResources"
+          path="com.mobilebook.model.bc.am.rest.v1.AirportAM_FlightsViewResources"/>
+    <page id="v1_AirportAM_AirlinesViewResources"
+          path="com.mobilebook.model.bc.am.rest.v1.AirportAM_AirlinesViewResources"/>
+    <page id="v1_AirportAM_AirportsViewResources"
+          path="com.mobilebook.model.bc.am.rest.v1.AirportAM_AirportsViewResources"/>
+  </pageDefinitionUsages>
+</Application>

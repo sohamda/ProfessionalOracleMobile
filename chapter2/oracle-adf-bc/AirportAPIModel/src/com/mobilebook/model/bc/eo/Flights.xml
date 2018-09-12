@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="Flights"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="FLIGHTS"
+  AliasName="Flights"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="FlightNumber"
+    IsNotNull="true"
+    Precision="20"
+    ColumnName="FLIGHT_NUMBER"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FLIGHTS"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="DateTime"
+    ColumnName="DATE_TIME"
+    SQLType="TIMESTAMP"
+    Type="java.sql.Timestamp"
+    ColumnType="TIMESTAMP"
+    TableName="FLIGHTS"/>
+  <Attribute
+    Name="IsArrival"
+    IsNotNull="true"
+    Precision="1"
+    ColumnName="IS_ARRIVAL"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FLIGHTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Place"
+    ColumnName="PLACE"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="FLIGHTS"/>
+  <Attribute
+    Name="Airline"
+    ColumnName="AIRLINE"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="FLIGHTS"/>
+  <AccessorAttribute
+    Name="CheckInData"
+    Association="com.mobilebook.model.bc.eo.CheckInDataFk1Assoc"
+    AssociationEnd="com.mobilebook.model.bc.eo.CheckInDataFk1Assoc.CheckInData"
+    AssociationOtherEnd="com.mobilebook.model.bc.eo.CheckInDataFk1Assoc.Flights"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="Airlines"
+    Association="com.mobilebook.model.bc.eo.AirlinesFkAssoc"
+    AssociationEnd="com.mobilebook.model.bc.eo.AirlinesFkAssoc.Airlines"
+    AssociationOtherEnd="com.mobilebook.model.bc.eo.AirlinesFkAssoc.Flights"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="Airports"
+    Association="com.mobilebook.model.bc.eo.AirportsFkAssoc"
+    AssociationEnd="com.mobilebook.model.bc.eo.AirportsFkAssoc.Airports"
+    AssociationOtherEnd="com.mobilebook.model.bc.eo.AirportsFkAssoc.Flights"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="CheckInData1"
+    Association="com.mobilebook.model.bc.eo.FlighCheckInDataAssoc"
+    AssociationEnd="com.mobilebook.model.bc.eo.FlighCheckInDataAssoc.CheckInData1"
+    AssociationOtherEnd="com.mobilebook.model.bc.eo.FlighCheckInDataAssoc.Flights1"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="FlightsPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="FLIGHTS_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.mobilebook.model.bc.eo.Flights.FlightNumber"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="AirlinesFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="AIRLINES_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="AIRLINES_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.mobilebook.model.bc.eo.Flights.Airline"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="AirportsFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="AIRPORTS_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="AIRPORTS_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.mobilebook.model.bc.eo.Flights.Place"/>
+    </AttrArray>
+  </Key>
+</Entity>
