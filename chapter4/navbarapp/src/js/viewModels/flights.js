@@ -3,13 +3,13 @@
  * The Universal Permissive License (UPL), Version 1.0
  */
 /*
- * Your incidents ViewModel code goes here
+ * Your Flights ViewModel code goes here
  */
 define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'promise', 'ojs/ojmodel', 'ojs/ojtable', 
             'ojs/ojcollectiontabledatasource', 'ojs/ojdatetimepicker', 'ojs/ojtimezonedata', 'ojs/ojlistview'],
         function (oj, ko, $) {
 
-            function IncidentsViewModel() {
+            function FlightsViewModel() {
                 var self = this;
 
                 self.allFlightsCol = ko.observable();
@@ -37,27 +37,27 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'promise', 'ojs/oj
                 });
                 
                 self.AllDepartingFlightsCollection = oj.Collection.extend({
-                    url: "https://oracleDBAPIs-partnercloud17.apaas.us6.oraclecloud.com/api/getDepartingFlights",
+                    url: 'https://oracleDBAPIs-partnercloud17.apaas.us6.oraclecloud.com/api/getDepartingFlights',
                     model: new self.AllFlight,
-                    comparator: "Flight",
+                    comparator: 'Flight',
                     parse: function (flights) {
                         return flights.result.rows;
                     }
                 });
                 
                 self.AllArrvingFlightsCollection = oj.Collection.extend({
-                    url: "https://oracleDBAPIs-partnercloud17.apaas.us6.oraclecloud.com/api/getArrivingFlights",
+                    url: 'https://oracleDBAPIs-partnercloud17.apaas.us6.oraclecloud.com/api/getArrivingFlights',
                     model: new self.AllFlight,
-                    comparator: "Flight",
+                    comparator: 'Flight',
                     parse: function (flights) {
                         return flights.result.rows;
                     }
                 });
 
                 self.AllFlightsCollection = oj.Collection.extend({
-                    url: "https://oracleDBAPIs-partnercloud17.apaas.us6.oraclecloud.com/api/getAllFlights",
+                    url: 'https://oracleDBAPIs-partnercloud17.apaas.us6.oraclecloud.com/api/getAllFlights',
                     model: new self.AllFlight,
-                    comparator: "Flight",
+                    comparator: 'Flight',
                     parse: function (flights) {
                         return flights.result.rows;
                     }
@@ -74,11 +74,11 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'promise', 'ojs/oj
 
                 self.arivalOrDepartureFunc = function (context) {
                     var link = $(document.createElement('div'));
-                    var faclass = "";
-                    var style="color:green;"
+                    var faclass = '';
+                    var style='color:green;'
                     if(context.row.IsArrival === 'Y') {
-                        faclass = "fa-rotate-180";
-                        style="color:blue;"
+                        faclass = 'fa-rotate-180';
+                        style='color:blue;'
                         
                     }
                     link.attr('class', 'fa fa-plane ' + faclass);
@@ -156,6 +156,6 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'promise', 'ojs/oj
              * each time the view is displayed.  Return an instance of the ViewModel if
              * only one instance of the ViewModel is needed.
              */
-            return new IncidentsViewModel();
+            return new FlightsViewModel();
         }
 );

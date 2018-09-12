@@ -17,22 +17,22 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojrouter', 'ojs/ojknockout', 'ojs/ojarray
        // Router setup
        self.router = oj.Router.rootInstance;
        self.router.configure({
-         'dashboard': {label: 'Home', isDefault: true},
-         'incidents': {label: 'Flights'},
-         'customers': {label: 'Check-In'},
-         'about': {label: 'Transportation'}
+         'home': {label: 'Home', isDefault: true},
+         'flights': {label: 'Flights'},
+         'checkin': {label: 'Check-In'},
+         'transportation': {label: 'Transportation'}
        });
       oj.Router.defaults['urlAdapter'] = new oj.Router.urlParamAdapter();
 
       // Navigation setup
       var navData = [
-      {name: 'Get Around', id: 'dashboard',
+      {name: 'Get Around', id: 'home',
        iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 fa fa-home fa-2x'},
-      {name: 'Flights', id: 'incidents',
+      {name: 'Flights', id: 'flights',
        iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 fa fa-plane fa-2x'},
-      {name: 'Check-In', id: 'customers',
+      {name: 'Check-In', id: 'checkin',
        iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 fa fa-check fa-2x'},
-      {name: 'Transportation', id: 'about',
+      {name: 'Transportation', id: 'transportation',
        iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 fa-exchange fa fa-2x'}
       ];
       self.navDataSource = new oj.ArrayTableDataSource(navData, {idAttribute: 'id'});
